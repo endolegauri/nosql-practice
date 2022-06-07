@@ -2,4 +2,24 @@ show dbs;
 
 use Practice_NoSQL;
 
-show dbs;
+show collections;
+
+db.comments.find();
+
+db.comments.insert(
+    {
+        'id' : 1,
+        'name' : 'ABC',
+        'email' : 'abc@gmail.com',
+        'city' : 'Pune'
+    }
+);
+
+db.comments.find();
+
+db.dropDatabase();
+
+use Practice_NoSQL;
+db.dropDatabase();
+
+
