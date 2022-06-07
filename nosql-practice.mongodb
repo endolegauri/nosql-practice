@@ -2,3 +2,4 @@ show dbs;
 
 use Practice_NoSQL;
 
+show dbs;
