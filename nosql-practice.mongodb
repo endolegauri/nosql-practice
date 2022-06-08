@@ -1,12 +1,18 @@
 show dbs;
 
+db.dropDatabase();
+
 use Practice_NoSQL;
 
 show collections;
 
-db.comments.find();
+db.createCollection('Student');
 
-db.comments.insert(
+show collections
+
+db.Student.drop();
+
+db.Student.insert(
     {
         'id' : 1,
         'name' : 'ABC',
@@ -15,11 +21,50 @@ db.comments.insert(
     }
 );
 
-db.comments.find();
+db.Student.find();
 
-db.dropDatabase();
+db.Student.insertMany(
+    [{
+        'id' : 2,
+        'name' : 'DEF',
+        'email' : 'def@gmail.com',
+        'city' : 'Mumbai'
+    },
+    {
+        'id' : 3,
+        'name' : 'GHI',
+        'email' : 'ghi@gmail.com',
+        'city' : 'Pune'
+    },
+    {
+        'id' : 4,
+        'name' : 'JKL',
+        'email' : 'jkl@gmail.com',
+        'city' : 'Bangalore'
+    },
+    {
+        'id' : 5,
+        'name' : 'MNO',
+        'email' : 'mno@gmail.com',
+        'city' : 'Pune'
+    }]
+);
 
-use Practice_NoSQL;
-db.dropDatabase();
+db.Student.find();
 
+db.Student.insert(
+    {
+        'id' : 6,
+        'name' : 'PQR',
+        'email' : 'pqr@gmail.com',
+        'city' : 'Mumbai'
+    });
 
+db.Student.remove({'id' : 6});
+
+db.Student.update({'id' : 6},{
+        'id' : 6,
+        'name' : 'PQRs',
+        'email' : 'pqr@gmail.com',
+        'city' : 'Mumbai'
+});
