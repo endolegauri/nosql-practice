@@ -62,6 +62,8 @@ db.Student.insert(
 
 db.Student.remove({'id' : 6});
 
+db.Student.updateOne({'id' : 6},{$set : {'name' : 'PQRs'}});
+
 db.Student.update({'id' : 6},{
         'id' : 6,
         'name' : 'PQRs',
