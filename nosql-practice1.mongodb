@@ -1,2 +1,82 @@
 //Aggregate operations
 
+show collections;
+
+db.createCollection("Grocery");
+
+db.Grocery.insertMany([
+    {'product' : 'Milk', 'total' : 60, 'student' : 'ABC'},
+    {'product' : 'Milk', 'total' : 60, 'student' : 'GHI'},
+    {'product' : 'Toothbrush', 'total' : 60, 'student' : 'DEF'},
+    {'product' : 'Pen', 'total' : 60, 'student' : 'ABC'},
+    {'product' : 'Cup', 'total' : 60, 'student' : 'JKL'},
+    {'product' : 'Milk', 'total' : 60, 'student' : 'DEF'},
+    {'product' : 'Plate', 'total' : 60, 'student' : 'ABC'}
+]);
+
+db.Grocery.find();
+
+db.Grocery.updateOne(
+    {'product' : 'Pen'},{$set : {'total' : 10}}
+    );
+db.Grocery.updateOne(
+    {'product' : 'Cup'},{$set : {'total' : 100}}
+    );
+db.Grocery.updateOne(
+    {'product' : 'Plate'},{$set : {'total' : 40}}
+    );
+
+db.Grocery.updateOne(
+    {'product' : 'Toothbrush'},{$set : {'total' : 35}}
+    );
+
+// count 
+db.Grocery.count({'product' : 'Milk'});
+
+// Distinct products
+db.Grocery.distinct('product');
+
+// total amount of money by each student
+db.Grocery.aggregate(
+    [
+        {$match: {}},
+        {$group: {
+          _id: '$student',
+          total: {$sum: '$total'}}
+        }
+    ]
+);
+
+// total no of time student did grocery shopping.
+db.Grocery.aggregate(
+    [
+        {$match: {}},
+        {$group: {
+          _id: '$student',
+          total: {$sum: 1}}
+        }
+    ]
+);
+
+// total amount of money spent for perticular product (desc order)
+db.Grocery.aggregate(
+    [
+        {$match: {}},
+        {$group: {
+          _id: '$product',
+          total: {$sum: '$total'}}
+        },
+        {$sort: {total: -1}} // asc - {total: 1}
+    ]
+);
+    
+// filter by student name in Grocery
+
+db.Grocery.aggregate(
+    {$match: {student: {$in: ["ABC","DEF"]}}},
+    {$group: {
+        _id: '$student',
+        total: {$sum: '$total'}}
+    },
+    {$sort: {total: 1}}
+)
