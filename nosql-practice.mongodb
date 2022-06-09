@@ -73,5 +73,5 @@ db.Student.update({'id' : 6},{$set :{
 
 db.Student.update({'id' : 6},{$set :{
         'fid' : 6,
-        'fname' : 'PQRs',
+        'fname' : 'pqrs',
 }});
