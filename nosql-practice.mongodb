@@ -64,9 +64,14 @@ db.Student.remove({'id' : 6});
 
 db.Student.updateOne({'id' : 6},{$set : {'name' : 'PQRs'}});
 
-db.Student.update({'id' : 6},{
+db.Student.update({'id' : 6},{$set :{
         'id' : 6,
         'name' : 'PQRs',
-        'email' : 'pqr@gmail.com',
+        'email' : 'pqrs@gmail.com',
         'city' : 'Mumbai'
-});
+}});
+
+db.Student.update({'id' : 6},{$set :{
+        'fid' : 6,
+        'fname' : 'PQRs',
+}});
