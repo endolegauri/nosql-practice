@@ -1,4 +1,77 @@
 show dbs;
 
+db.dropDatabase();
+
 use Practice_NoSQL;
 
+show collections;
+
+db.createCollection('Student');
+
+show collections
+
+db.Student.drop();
+
+db.Student.insert(
+    {
+        'id' : 1,
+        'name' : 'ABC',
+        'email' : 'abc@gmail.com',
+        'city' : 'Pune'
+    }
+);
+
+db.Student.find();
+
+db.Student.insertMany(
+    [{
+        'id' : 2,
+        'name' : 'DEF',
+        'email' : 'def@gmail.com',
+        'city' : 'Mumbai'
+    },
+    {
+        'id' : 3,
+        'name' : 'GHI',
+        'email' : 'ghi@gmail.com',
+        'city' : 'Pune'
+    },
+    {
+        'id' : 4,
+        'name' : 'JKL',
+        'email' : 'jkl@gmail.com',
+        'city' : 'Bangalore'
+    },
+    {
+        'id' : 5,
+        'name' : 'MNO',
+        'email' : 'mno@gmail.com',
+        'city' : 'Pune'
+    }]
+);
+
+db.Student.find();
+
+db.Student.insert(
+    {
+        'id' : 6,
+        'name' : 'PQR',
+        'email' : 'pqr@gmail.com',
+        'city' : 'Mumbai'
+    });
+
+db.Student.remove({'id' : 6});
+
+db.Student.updateOne({'id' : 6},{$set : {'name' : 'PQRs'}});
+
+db.Student.update({'id' : 6},{$set :{
+        'id' : 6,
+        'name' : 'PQRs',
+        'email' : 'pqrs@gmail.com',
+        'city' : 'Mumbai'
+}});
+
+db.Student.update({'id' : 6},{$set :{
+        'fid' : 6,
+        'fname' : 'pqrs',
+}});
